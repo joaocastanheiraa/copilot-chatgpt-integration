@@ -1,0 +1,15 @@
+name: ChatGPT Integration on:
+  push:
+    branches:
+      - main jobs:
+  execute-chatgpt:
+    runs-on: ubuntu-latest steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4 with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install openai
+      - name: Run ChatGPT script
+        run: python3 chatgpt_integration.py "Explique a consulta SQL: SELECT * FROM clientes WHERE idade > 30;"
